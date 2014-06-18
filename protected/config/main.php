@@ -43,8 +43,10 @@ return array(
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/<view:\w+>'=>'<controller>/<action>/<view>',
+		                '<controller:\w+>/<action:\w+>/<view:\w+>'=>'<controller>/<action>/<view>',
 			),
+			'showScriptName'=>false,
+			'urlSuffix'=>'.html',
 		),
 
 		/*'db'=>array(
