@@ -5,6 +5,9 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'____New Project___',
@@ -18,6 +21,8 @@ return array(
 		'application.components.*',
 	),
 
+    'theme'=>'bootstrap',
+
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 
@@ -25,7 +30,11 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'qwerty',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			/*'ipFilters'=>array('127.0.0.1','::1'),*/
+            'ipFilters'=>array(),
+            'generatorPaths'=>array(
+                'bootstrap.gii',
+            ),
 		),
 
 	),
@@ -41,13 +50,19 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+                /*'gii'=>'gii',
+                'gii/<controller:\w+>'=>'gii/<controller>',
+                'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',*/
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-		                '<controller:\w+>/<action:\w+>/<view:\w+>'=>'<controller>/<action>/<view>',
+                '<controller:\w+>/<action:\w+>/<view:\w+>'=>'<controller>/<action>/<view>',
 			),
 			'showScriptName'=>false,
-			'urlSuffix'=>'.html',
 		),
+
+        'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
 
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
